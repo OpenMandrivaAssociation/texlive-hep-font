@@ -1,6 +1,6 @@
 Name:		texlive-hep-font
 Version:	64900
-Release:	1
+Release:	2
 Summary:	Latin modern extended by computer modern
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/hep-font
