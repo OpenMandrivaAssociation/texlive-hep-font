@@ -1,5 +1,5 @@
 Name:		texlive-hep-font
-Version:	67632
+Version:	72984
 Release:	1
 Summary:	Latin modern extended by computer modern
 Group:		Publishing
