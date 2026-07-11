@@ -1,41 +1,23 @@
-Name:		texlive-hep-font
-Version:	72984
-Release:	1
+%global tl_name hep-font
+%global tl_revision 76220
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	1.4
+Release:	%{tl_revision}.1
 Summary:	Latin modern extended by computer modern
 Group:		Publishing
-URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/hep-font
+URL:		https://www.ctan.org/tex-archive/fonts/utilities/hep-font
 License:	lppl1.3c
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/hep-font.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/hep-font.doc.r%{version}.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/hep-font.source.r%{version}.tar.xz
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/hep-font.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/hep-font.doc.r%{tl_revision}.tar.xz
+Source2:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/hep-font.source.r%{tl_revision}.tar.xz
 BuildArch:	noarch
-BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+BuildSystem:	texlive
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-The hep-font package loads standard font packages and extends
-the usual Latin Modern implementations by replacing missing
-fonts with Computer Modern counterparts. The package is loaded
-with \usepackage{hep-font}.
+The hep-font package loads standard font packages and extends the usual
+Latin Modern implementations by replacing missing fonts with Computer
+Modern counterparts. The package is loaded with \usepackage{hep-font}.
 
-%prep
-%setup -c -a1 -a2
-%autopatch -p1
-
-%build
-
-%install
-rm -rf tlpkg
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -a * %{buildroot}%{_texmfdistdir}
-
-%files
-%doc %{_texmfdistdir}/source/fonts/hep-font
-%{_texmfdistdir}/tex/latex/hep-font
-%doc %{_texmfdistdir}/doc/fonts/hep-font
-
-%post -p %{_sbindir}/texlive.post
-
-%postun
-[ "$1" -eq 0 ] && %{_sbindir}/texlive.post
